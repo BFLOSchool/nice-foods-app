@@ -24,7 +24,11 @@ code {
 
 .cover {
   object-fit: cover;
-  width: 300px;
+  width: 350px;
   height: 200px;
   border-radius: 5px;
+}
+
+.gray {
+  color: #878787;
 }
