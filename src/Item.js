@@ -36,11 +36,15 @@ class Item extends Component {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac blandit diam, in posuere felis. Praesent volutpat, augue id vulputate fringilla, turpis metus ullamcorper elit, non bibendum turpis odio in nulla. Phasellus sed aliquam mauris. Donec nulla leo, congue sit amet aliquet non, aliquam nec eros. Nulla eget mi sed nisl hendrerit dapibus vitae aliquet neque. Etiam egestas turpis sit amet ornare auctor. Suspendisse ac tristique purus.<br /><br />
 
                     Proin imperdiet pulvinar sem, id porttitor enim tincidunt sed. Nulla id nisl eros. Nulla et elementum arcu. Etiam et elementum arcu. Mauris finibus egestas pulvinar. Pellentesque sagittis ultrices dui sed pellentesque. Mauris et varius libero, vel rutrum dui.<br /><br />
-
-                    Duis hendrerit diam quis sem fringilla malesuada id in dui. Praesent placerat mattis ante, nec ultrices diam varius non. Quisque eu dolor hendrerit, facilisis erat ac, tristique lectus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec porta egestas odio, at vestibulum nisl maximus sed. Donec aliquam ante in orci tincidunt tincidunt. Nam porttitor ultrices libero ut pellentesque. Nulla eget justo sem. Sed vulputate malesuada maximus.<br /><br /> Nullam vitae dui ut dui finibus laoreet. Sed fermentum consequat dictum. Nullam tempor orci nisl, ac aliquet nibh auctor sagittis.<br /><br />
-
-                    <b><span className="orange"><i className="fas fa-check"></i>Add to Cart</span></b>
                   </p>
+                  <h4>Ingredients</h4>
+                  <p className="gray">Please see the below ingredients.</p>
+                  <ul className="gray">
+                    <li>Strawberries</li>
+                    <li>Blueberries</li>
+                    <li>Ice Cubes</li>
+                  </ul>
+                  <b><span className="orange"><i className="fas fa-check"></i>Add to Cart</span></b>
                </div>
                <div className="col-4" style={{borderRadius: 5}}>
                   <div style={{backgroundColor: 'white', padding: 20}}>
