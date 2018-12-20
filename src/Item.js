@@ -4,6 +4,19 @@ import Nav from './Components/Nav';
 import './App.css';
 
 class Item extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      cart: [],
+      item: {
+        name: "Smoothie",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac blandit diam, in posuere felis. Praesent volutpat, augue id vulputate fringilla, turpis metus ullamcorper elit, non bibendum turpis odio in nulla. Phasellus sed aliquam mauris. Donec nulla leo, congue sit amet aliquet non, aliquam nec eros. Nulla eget mi sed nisl hendrerit dapibus vitae aliquet neque. Etiam egestas turpis sit amet ornare auctor. Suspendisse ac tristique purus.\n\nProin imperdiet pulvinar sem, id porttitor enim tincidunt sed. Nulla id nisl eros. Nulla et elementum arcu. Etiam et elementum arcu. Mauris finibus egestas pulvinar. Pellentesque sagittis ultrices dui sed pellentesque. Mauris et varius libero, vel rutrum dui.",
+        ingredients: ["Strawberries", "Blueberries", "Ice Cubes"],
+        image: "https://cdn.bfloschool.com/projects/marketplace/images/smoothie.jpg",
+        price: 5.00
+      }
+    }
+  }
   render() {
     var imageUrl = 'url("https://cdn.bfloschool.com/projects/marketplace/images/smoothie.jpg")';
     return (
