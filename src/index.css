@@ -54,3 +54,7 @@ code {
 .orange {
   color: #FF5C00;
 }
+
+a {
+  text-decoration: none;
+}
