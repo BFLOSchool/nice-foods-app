@@ -42,18 +42,16 @@ class Item extends Component {
              <br /><br />
              <div className="row">
                <div className="col-8">
-                 <h2>Smoothie</h2>
+                 <h2>{this.state.item.name}</h2>
                  <p className="gray">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac blandit diam, in posuere felis. Praesent volutpat, augue id vulputate fringilla, turpis metus ullamcorper elit, non bibendum turpis odio in nulla. Phasellus sed aliquam mauris. Donec nulla leo, congue sit amet aliquet non, aliquam nec eros. Nulla eget mi sed nisl hendrerit dapibus vitae aliquet neque. Etiam egestas turpis sit amet ornare auctor. Suspendisse ac tristique purus.<br /><br />
-
-                    Proin imperdiet pulvinar sem, id porttitor enim tincidunt sed. Nulla id nisl eros. Nulla et elementum arcu. Etiam et elementum arcu. Mauris finibus egestas pulvinar. Pellentesque sagittis ultrices dui sed pellentesque. Mauris et varius libero, vel rutrum dui.<br /><br />
+                   {this.state.item.description}
                   </p>
                   <h4>Ingredients</h4>
                   <p className="gray">Please see the below ingredients.</p>
                   <ul className="gray">
-                    <li>Strawberries</li>
-                    <li>Blueberries</li>
-                    <li>Ice Cubes</li>
+                    {this.state.item.ingredients.map((ingredient, s) => (
+                      <li>{ingredient}</li>
+                    ))}
                   </ul>
                   <b><span className="orange"><i className="fas fa-check"></i>Add to Cart</span></b>
                </div>
