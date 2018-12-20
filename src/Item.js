@@ -23,21 +23,13 @@ class Item extends Component {
       <div style={{backgroundColor: '#FAFAFA'}}>
         <Nav />
          <div>
-           <div  className="image-cover" style={{background: imageUrl, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center center', color: '#fff', height: 200, paddingTop: 50}} >
-            <div className="container">
-              <div className="col-sm-3">
-                <div className="row">
-
-                  <div className="col-sm-3" style={{borderRadius: 10, padding: 20, float: 'right'}}>
-                    <div className="row">
-                      <span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+           <div className="container-fluid">
+             <div className="row">
+               <div className="col-md-12">
+                 <img src={this.state.item.image} alt="placeholder 960" className="image-cover" />
+               </div>
+             </div>
+           </div>
            <div className="container">
              <br /><br />
              <div className="row">
