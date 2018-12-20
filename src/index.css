@@ -20,9 +20,6 @@ code {
     monospace;
 }
 
-.card {
-}
-
 .cover {
   object-fit: cover;
   width: 350px;

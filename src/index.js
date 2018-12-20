@@ -16,8 +16,7 @@ ReactDOM.render(
   <Router>
     <div>
       <Route exact path="/" component={Home}/>
-        <Route exact path="/item" component={Item}/>
-
+      <Route exact path="/item" component={Item}/>
     </div>
   </Router>,
  document.getElementById('root')

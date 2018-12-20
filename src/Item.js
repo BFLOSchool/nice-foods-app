@@ -11,7 +11,6 @@ class Item extends Component {
       <div style={{backgroundColor: '#FAFAFA'}}>
         <Nav />
          <div>
-
            <div  className="image-cover" style={{background: imageUrl, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center center', color: '#fff', height: 200, paddingTop: 50}} >
             <div className="container">
               <div className="col-sm-3">

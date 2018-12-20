@@ -32,8 +32,6 @@ class Home extends Component {
                   <span><b>Grilled Cheese</b> $20</span><br />
                   <small className="gray">This is a cheap grilled cheese</small><br />
                 </div>
-
-
               </div>
            </div>
          </div>
