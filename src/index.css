@@ -66,3 +66,7 @@ a {
   height: 250px;
   object-fit: cover;
 }
+
+.pointer {
+  cursor: pointer;
+}

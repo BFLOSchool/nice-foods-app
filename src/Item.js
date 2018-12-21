@@ -6,6 +6,9 @@ import './App.css';
 class Item extends Component {
   constructor(props) {
     super(props)
+
+    this.addToCart = this.addToCart.bind(this);
+
     this.state = {
       cart: [],
       item: {
@@ -17,8 +20,12 @@ class Item extends Component {
       }
     }
   }
+  addToCart() {
+    this.setState({
+      cart: this.state.cart.concat(this.state.item)
+    })
+  }
   render() {
-    var imageUrl = 'url("https://cdn.bfloschool.com/projects/marketplace/images/smoothie.jpg")';
     return (
       <div style={{backgroundColor: '#FAFAFA'}}>
         <Nav />
@@ -26,7 +33,7 @@ class Item extends Component {
            <div className="container-fluid">
              <div className="row">
                <div className="col-md-12">
-                 <img src={this.state.item.image} alt="placeholder 960" className="image-cover" />
+                 <img src={this.state.item.image} className="image-cover" alt="cover image" />
                </div>
              </div>
            </div>
@@ -45,7 +52,7 @@ class Item extends Component {
                       <li>{ingredient}</li>
                     ))}
                   </ul>
-                  <b><span className="orange"><i className="fas fa-check"></i>Add to Cart</span></b>
+                  <b><span className="orange pointer" onClick={this.addToCart}><i className="fas fa-check"></i>Add to Cart</span></b>
                </div>
                <div className="col-4" style={{borderRadius: 5}}>
                   <div style={{backgroundColor: 'white', padding: 20}}>
@@ -53,7 +60,7 @@ class Item extends Component {
                     <hr style={{marginBottom: 10, marginTop: 10}} />
                     <div className="row">
                       <div className="col-sm-9">
-                        <b className="charcoal">Subtotal (3 items)</b>
+                        <b className="charcoal">Subtotal ({this.state.cart.length} items)</b>
                       </div>
                       <div className="col-sm-3">
                         <span>$5</span>
