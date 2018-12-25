@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import Home from './Home';
 import Item from './Item';
+import Checkout from './Checkout';
 
 import {
   BrowserRouter as Router,
@@ -17,6 +18,7 @@ ReactDOM.render(
     <div>
       <Route exact path="/" component={Home}/>
       <Route exact path="/item" component={Item}/>
+      <Route exact path="/checkout" component={Checkout}/>
     </div>
   </Router>,
  document.getElementById('root')
