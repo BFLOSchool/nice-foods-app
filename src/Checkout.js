@@ -66,13 +66,14 @@ class Checkout extends Component {
                   </div>
                   <div className="col-6">
                   <select>
-                    <option value="16"> 2016</option>
-                    <option value="17"> 2017</option>
-                    <option value="18"> 2018</option>
                     <option value="19"> 2019</option>
                     <option value="20"> 2020</option>
                     <option value="21"> 2021</option>
-                </select>
+                    <option value="22"> 2022</option>
+                    <option value="23"> 2023</option>
+                    <option value="24"> 2024</option>
+                    <option value="25"> 2025</option>
+                  </select>
                   </div>
                   <br /><br />
                   <div className="col-6">
@@ -89,7 +90,7 @@ class Checkout extends Component {
                  <hr style={{marginBottom: 10, marginTop: 10}} />
                  <div className="row">
                    <div className="col-sm-9">
-                     <b className="charcoal">Subtotal ({this.state.cart.length} items)</b>
+                     <b className="charcoal">Subtotal</b>
                    </div>
                    <div className="col-sm-3">
                      <span>$5</span>
