@@ -83,7 +83,7 @@ class Item extends Component {
                         <b className="black">Grand Total</b>
                       </div>
                       <div className="col-sm-3">
-                        <span>$5</span>
+                        <span>$5.87</span>
                       </div>
                     </div>
                   </div>

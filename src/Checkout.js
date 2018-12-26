@@ -124,7 +124,10 @@ class Checkout extends Component {
                     <input type="text" placeholder="Zip Code" />
                   </div>
                   <br /><br />
-                  <div className="col-12">
+                  <div className="col-6">
+                    <button className="back"><b>Checkout</b></button>
+                  </div>
+                  <div className="col-6">
                     <input type="submit" className="add" onClick={this.checkout} />
                   </div>
                 </div>
@@ -156,7 +159,7 @@ class Checkout extends Component {
                      <b className="black">Grand Total</b>
                    </div>
                    <div className="col-sm-3">
-                     <span>$5</span>
+                     <span>$5.87</span>
                    </div>
                  </div>
                </div>
