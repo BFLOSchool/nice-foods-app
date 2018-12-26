@@ -6,6 +6,8 @@ class Checkout extends Component {
     super(props)
 
     this.checkout = this.checkout.bind(this);
+    this.goBack = this.goBack.bind(this);
+    
     this.handleNameOnCardChange = this.handleNameOnCardChange.bind(this);
     this.handleCardNumberChange = this.handleCardNumberChange.bind(this);
     this.handleCardExpiryMonthChange = this.handleCardExpiryMonthChange.bind(this);
@@ -59,6 +61,9 @@ class Checkout extends Component {
     this.setState({
       cardZipCode: event.target.value
     })
+  }
+  goBack() {
+
   }
   checkout(event) {
     event.preventDefault();
@@ -125,7 +130,7 @@ class Checkout extends Component {
                   </div>
                   <br /><br />
                   <div className="col-6">
-                    <button className="back"><b>Checkout</b></button>
+                    <button className="back" onClick={this.goBack}><b>Back</b></button>
                   </div>
                   <div className="col-6">
                     <input type="submit" className="add" onClick={this.checkout} />
