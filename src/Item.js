@@ -49,14 +49,16 @@ class Item extends Component {
                   <p className="gray">Please see the below ingredients.</p>
                   <ul className="gray">
                     {this.state.item.ingredients.map((ingredient, s) => (
-                      <li>{ingredient}</li>
+                      <li key={s}>{ingredient}</li>
                     ))}
                   </ul>
                   <b><span className="orange pointer" onClick={this.addToCart}><i className="fas fa-check"></i>Add to Cart</span></b>
                </div>
                <div className="col-4" style={{borderRadius: 5}}>
                   <div style={{backgroundColor: 'white', padding: 20}}>
-                    <button className="add"><b>Checkout</b></button>
+                    <a href="/checkout">
+                      <button className="add"><b>Checkout</b></button>
+                    </a>
                     <hr style={{marginBottom: 10, marginTop: 10}} />
                     <div className="row">
                       <div className="col-sm-9">
@@ -87,7 +89,6 @@ class Item extends Component {
                   </div>
                </div>
              </div>
-
               <br /><hr /><br />
               <h2>Other Foods</h2>
               <div className="row">
@@ -96,7 +97,6 @@ class Item extends Component {
                   <span><b>Grilled Cheese</b> $20</span><br />
                   <small className="gray">This is a cheap grilled cheese</small><br />
                 </div>
-
                 <div className="col-4 ">
                   <img src="https://cdn.bfloschool.com/projects/marketplace/images/grilled-cheese.jpg" className="cover" /><br />
                   <span><b>Grilled Cheese</b> $20</span><br />
