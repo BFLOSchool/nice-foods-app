@@ -67,12 +67,12 @@ class Checkout extends Component {
   }
   checkout(event) {
     event.preventDefault();
-    if (this.state.nameOnCard == "" || this.state.cardNumber.length != 16 || this.state.cardExpiryYear.length != 2 || this.state.cardExpiryMonth.length != 2 || this.state.cardCVV.length > 5 || this.state.cardZipCode.length != 5) {
-      // validation errors, form not properly filled out
-      alert("Error. Please completely fill out this form.");
-    } else {
+    if (this.state.nameOnCard != "" && this.state.cardNumber.length == 16 && this.state.cardExpiryYear.length == 2 && this.state.cardExpiryMonth.length == 2 && this.state.cardCVV != "" && this.state.cardCVV.length < 5 && this.state.cardZipCode.length == 5) {
       // form successfully filled out
       alert("Success! Your order has been placed.")
+    } else {
+      // validation errors, form not properly filled out
+      alert("Error. Please completely fill out this form.");
     }
   }
   render() {
