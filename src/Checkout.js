@@ -7,7 +7,7 @@ class Checkout extends Component {
 
     this.checkout = this.checkout.bind(this);
     this.goBack = this.goBack.bind(this);
-    
+
     this.handleNameOnCardChange = this.handleNameOnCardChange.bind(this);
     this.handleCardNumberChange = this.handleCardNumberChange.bind(this);
     this.handleCardExpiryMonthChange = this.handleCardExpiryMonthChange.bind(this);
@@ -67,7 +67,13 @@ class Checkout extends Component {
   }
   checkout(event) {
     event.preventDefault();
-    console.log(this.state)
+    if (this.state.nameOnCard == "" || this.state.cardNumber.length != 16 || this.state.cardExpiryYear.length != 2 || this.state.cardExpiryMonth.length != 2 || this.state.cardCVV.length > 5 || this.state.cardZipCode.length != 5) {
+      // validation errors, form not properly filled out
+      alert("Error. Please completely fill out this form.");
+    } else {
+      // form successfully filled out
+      alert("Success! Your order has been placed.")
+    }
   }
   render() {
     return (
