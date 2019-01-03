@@ -8,11 +8,19 @@ import './App.css';
 class Home extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      items: []
+    }
+
     this.getItems()
   }
   getItems() {
     axios.get('https://dev-curriculum.bfloschool.com/api/marketplace')
     .then(function (response) {
+      this.setState({
+        items: response.data
+      })
       console.log(response.data);
     })
     .catch(function (error) {
