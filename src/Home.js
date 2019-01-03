@@ -1,9 +1,27 @@
+/* eslint-disable */
 import React, { Component } from 'react';
-import Nav from './Components/Nav';
+import axios from 'axios'
 
+import Nav from './Components/Nav';
 import './App.css';
 
 class Home extends Component {
+  constructor(props) {
+    super(props)
+    this.getItems()
+  }
+  getItems() {
+    axios.get('https://dev-curriculum.bfloschool.com/api/marketplace')
+    .then(function (response) {
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+    .then(function () {
+      console.log('next?')
+    });
+  }
   render() {
     return (
       <div>

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import Nav from './Components/Nav';
 
@@ -67,7 +68,7 @@ class Checkout extends Component {
   }
   checkout(event) {
     event.preventDefault();
-    if (this.state.nameOnCard != "" && this.state.cardNumber.length == 16 && this.state.cardExpiryYear.length == 2 && this.state.cardExpiryMonth.length == 2 && this.state.cardCVV != "" && this.state.cardCVV.length < 5 && this.state.cardZipCode.length == 5) {
+    if (this.state.nameOnCard !== "" && this.state.cardNumber.length === 16 && this.state.cardExpiryYear.length === 2 && this.state.cardExpiryMonth.length === 2 && this.state.cardCVV !== "" && this.state.cardCVV.length < 5 && this.state.cardZipCode.length === 5) {
       // form successfully filled out
       alert("Success! Your order has been placed.")
     } else {
