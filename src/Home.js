@@ -13,21 +13,17 @@ class Home extends Component {
       items: []
     }
 
+    this.getItems = this.getItems.bind(this);
     this.getItems()
   }
   getItems() {
     axios.get('https://dev-curriculum.bfloschool.com/api/marketplace')
-    .then(function (response) {
+    .then(response => {
       this.setState({
-        items: response.data
+        items: response.data.items
       })
-      console.log(response.data);
-    })
-    .catch(function (error) {
+    }).catch((error) => {
       console.log(error);
-    })
-    .then(function () {
-      console.log('next?')
     });
   }
   render() {
@@ -40,23 +36,15 @@ class Home extends Component {
              <h2>Online Marketplace</h2>
              <hr />
               <div className="row">
-                <div className="col-4 ">
-                <a href="/item">
-                  <img src="https://cdn.bfloschool.com/projects/marketplace/images/smoothie.jpg" className="cover" alt="image" /><br />
-                  <span><b>Smoothie</b> $20</span><br />
-                  <small className="gray">Yummy smoothie!</small><br />
-                </a>
-              </div>
-              <div className="col-4 ">
-                <img src="https://cdn.bfloschool.com/projects/marketplace/images/hamburger.jpg" className="cover" alt="image" /><br />
-                <span><b>Hamburger</b> $20</span><br />
-                <small className="gray">Delicious veggie burger!</small><br />
-              </div>
-              <div className="col-4 ">
-                <img src="https://cdn.bfloschool.com/projects/marketplace/images/grilled-cheese.jpg" className="cover" alt="image" /><br />
-                <span><b>Grilled Cheese</b> $20</span><br />
-                <small className="gray">This is a cheap grilled cheese</small><br />
-              </div>
+                {this.state.items.map((item, i) =>
+                  <div className="col-4" key={i}>
+                    <a href="/item">
+                      <img src={item.image} className="cover" alt="image" /><br />
+                      <span><b>{item.name}</b> ${item.price}</span><br />
+                      <small className="gray">{item.description}</small><br />
+                    </a>
+                  </div>
+                )}
             </div>
          </div>
        </div>
