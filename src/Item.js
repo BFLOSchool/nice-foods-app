@@ -33,7 +33,7 @@ class Item extends Component {
     });
   }
   render() {
-    if (this.state.item && this.state.item.ingredients) {
+    if (this.state.item) {
       return (
         <div style={{backgroundColor: '#FAFAFA'}}>
           <Nav />
