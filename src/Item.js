@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { Component } from 'react';
 import Nav from './Components/Nav';
+import axios from 'axios'
 
 import './App.css';
 
@@ -23,6 +24,7 @@ class Item extends Component {
   getItemDetails() {
     axios.get('https://dev-curriculum.bfloschool.com/api/marketplace/'+this.props.match.params.itemId)
     .then(response => {
+      console.log(response.data.item)
       this.setState({
         item: response.data.item
       })
@@ -31,87 +33,82 @@ class Item extends Component {
     });
   }
   render() {
-    return (
-      <div style={{backgroundColor: '#FAFAFA'}}>
-        <Nav />
-         <div>
-           <div className="container-fluid">
-             <div className="row">
-               <div className="col-md-12">
-                 <img src={this.state.item.image} className="image-cover" alt="cover image" />
+    if (this.state.item && this.state.item.ingredients) {
+      return (
+        <div style={{backgroundColor: '#FAFAFA'}}>
+          <Nav />
+           <div>
+             <div className="container-fluid">
+               <div className="row">
+                 <div className="col-md-12">
+                   <img src={this.state.item.image} className="image-cover" alt="cover image" />
+                 </div>
                </div>
              </div>
-           </div>
-           <div className="container">
-             <br /><br />
-             <div className="row">
-               <div className="col-8">
-                 <h2>{this.state.item.name}</h2>
-                 <p className="gray">
-                   {this.state.item.description}
-                  </p>
-                  <h4>Ingredients</h4>
-                  <p className="gray">Please see the below ingredients.</p>
-                  <ul className="gray">
-                    {this.state.item.ingredients.map((ingredient, s) => (
-                      <li key={s}>{ingredient}</li>
-                    ))}
-                  </ul>
-                  <b><span className="orange pointer" onClick={this.addToCart}><i className="fas fa-check"></i>Add to Cart</span></b>
+             <div className="container">
+               <br /><br />
+               <div className="row">
+                 <div className="col-8">
+                   <h2>{this.state.item.name}</h2>
+                   <p className="gray">
+                     {this.state.item.description}
+                    </p>
+                    <b><span className="orange pointer" onClick={this.addToCart}><i className="fas fa-check"></i>Add to Cart</span></b>
+                 </div>
+                 <div className="col-4" style={{borderRadius: 5}}>
+                    <div style={{backgroundColor: 'white', padding: 20}}>
+                      <a href="/checkout">
+                        <button className="add"><b>Checkout</b></button>
+                      </a>
+                      <hr style={{marginBottom: 10, marginTop: 10}} />
+                      <div className="row">
+                        <div className="col-sm-9">
+                          <b className="charcoal">Subtotal ({this.state.cart.length} items)</b>
+                        </div>
+                        <div className="col-sm-3">
+                          <span>$5</span>
+                        </div>
+                      </div>
+                      <hr style={{marginBottom: 10, marginTop: 10}} />
+                      <div className="row">
+                        <div className="col-sm-9">
+                          <b className="charcoal">Tax</b>
+                        </div>
+                        <div className="col-sm-3">
+                          <span>$0.87</span>
+                        </div>
+                      </div>
+                      <hr style={{marginBottom: 10, marginTop: 10}} />
+                      <div className="row">
+                        <div className="col-sm-9">
+                          <b className="black">Grand Total</b>
+                        </div>
+                        <div className="col-sm-3">
+                          <span>$5.87</span>
+                        </div>
+                      </div>
+                    </div>
+                 </div>
                </div>
-               <div className="col-4" style={{borderRadius: 5}}>
-                  <div style={{backgroundColor: 'white', padding: 20}}>
-                    <a href="/checkout">
-                      <button className="add"><b>Checkout</b></button>
-                    </a>
-                    <hr style={{marginBottom: 10, marginTop: 10}} />
-                    <div className="row">
-                      <div className="col-sm-9">
-                        <b className="charcoal">Subtotal ({this.state.cart.length} items)</b>
-                      </div>
-                      <div className="col-sm-3">
-                        <span>$5</span>
-                      </div>
-                    </div>
-                    <hr style={{marginBottom: 10, marginTop: 10}} />
-                    <div className="row">
-                      <div className="col-sm-9">
-                        <b className="charcoal">Tax</b>
-                      </div>
-                      <div className="col-sm-3">
-                        <span>$0.87</span>
-                      </div>
-                    </div>
-                    <hr style={{marginBottom: 10, marginTop: 10}} />
-                    <div className="row">
-                      <div className="col-sm-9">
-                        <b className="black">Grand Total</b>
-                      </div>
-                      <div className="col-sm-3">
-                        <span>$5.87</span>
-                      </div>
-                    </div>
+                <br /><hr /><br />
+                <h2>Other Foods</h2>
+                <div className="row">
+                  <div className="col-4 ">
+                    <img src="https://cdn.bfloschool.com/projects/marketplace/images/hamburger.jpg" className="cover" /><br />
+                    <span><b>Grilled Cheese</b> $20</span><br />
+                    <small className="gray">This is a cheap grilled cheese</small><br />
                   </div>
-               </div>
+                  <div className="col-4 ">
+                    <img src="https://cdn.bfloschool.com/projects/marketplace/images/grilled-cheese.jpg" className="cover" /><br />
+                    <span><b>Grilled Cheese</b> $20</span><br />
+                    <small className="gray">This is a cheap grilled cheese</small><br />
+                  </div>
+                </div><br /><br />
              </div>
-              <br /><hr /><br />
-              <h2>Other Foods</h2>
-              <div className="row">
-                <div className="col-4 ">
-                  <img src="https://cdn.bfloschool.com/projects/marketplace/images/hamburger.jpg" className="cover" /><br />
-                  <span><b>Grilled Cheese</b> $20</span><br />
-                  <small className="gray">This is a cheap grilled cheese</small><br />
-                </div>
-                <div className="col-4 ">
-                  <img src="https://cdn.bfloschool.com/projects/marketplace/images/grilled-cheese.jpg" className="cover" /><br />
-                  <span><b>Grilled Cheese</b> $20</span><br />
-                  <small className="gray">This is a cheap grilled cheese</small><br />
-                </div>
-              </div><br /><br />
            </div>
-         </div>
-      </div>
-    );
+        </div>
+      );
+    }
   }
 }
 
