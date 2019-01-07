@@ -17,7 +17,7 @@ ReactDOM.render(
   <Router>
     <div>
       <Route exact path="/" component={Home}/>
-      <Route exact path="/item" component={Item}/>
+      <Route exact path="/item/:itemId" component={Item}/>
       <Route exact path="/checkout" component={Checkout}/>
     </div>
   </Router>,

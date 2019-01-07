@@ -38,17 +38,17 @@ class Home extends Component {
               <div className="row">
                 {this.state.items.map((item, i) =>
                   <div className="col-4" key={i}>
-                    <a href="/item">
+                    <a href={'/item/'+item._id}>
                       <img src={item.image} className="cover" alt="image" /><br />
                       <span><b>{item.name}</b> ${item.price}</span><br />
                       <small className="gray">{item.description}</small><br />
                     </a>
                   </div>
                 )}
-            </div>
+              </div>
+           </div>
          </div>
-       </div>
-    </div>
+      </div>
     );
   }
 }
