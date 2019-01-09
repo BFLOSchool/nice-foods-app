@@ -12,14 +12,22 @@ class Item extends Component {
     this.addToCart = this.addToCart.bind(this);
     this.state = {
       cart: [],
+      total: 0,
       item: {}
     }
     this.getItemDetails();
   }
   addToCart() {
+    var newCart = this.state.cart.concat(this.state.item);
+    var total = 0;
+    for (var i = 0; i < newCart.length; i++) {
+      total = total + newCart[i].price;
+    }
     this.setState({
-      cart: this.state.cart.concat(this.state.item)
+      cart: newCart,
+      total: total
     })
+    localStorage.setItem(JSON.stringify(this.state.cart), "cart");
   }
   getItemDetails() {
     axios.get('https://dev-curriculum.bfloschool.com/api/marketplace/'+this.props.match.params.itemId)
@@ -33,6 +41,10 @@ class Item extends Component {
     });
   }
   render() {
+    var checkoutBtn;
+    if (this.state.cart.length > 0) {
+      checkoutBtn = <button className="add"><b>Checkout</b></button>;
+    }
     if (this.state.item) {
       return (
         <div style={{backgroundColor: '#FAFAFA'}}>
@@ -58,7 +70,7 @@ class Item extends Component {
                  <div className="col-4" style={{borderRadius: 5}}>
                     <div style={{backgroundColor: 'white', padding: 20}}>
                       <a href="/checkout">
-                        <button className="add"><b>Checkout</b></button>
+                        {checkoutBtn}
                       </a>
                       <hr style={{marginBottom: 10, marginTop: 10}} />
                       <div className="row">
@@ -66,7 +78,7 @@ class Item extends Component {
                           <b className="charcoal">Subtotal ({this.state.cart.length} items)</b>
                         </div>
                         <div className="col-sm-3">
-                          <span>$5</span>
+                          <span>${this.state.total}</span>
                         </div>
                       </div>
                       <hr style={{marginBottom: 10, marginTop: 10}} />
@@ -75,7 +87,7 @@ class Item extends Component {
                           <b className="charcoal">Tax</b>
                         </div>
                         <div className="col-sm-3">
-                          <span>$0.87</span>
+                          <span>${(this.state.total * 0.0875).toFixed(2)}</span>
                         </div>
                       </div>
                       <hr style={{marginBottom: 10, marginTop: 10}} />
@@ -84,7 +96,7 @@ class Item extends Component {
                           <b className="black">Grand Total</b>
                         </div>
                         <div className="col-sm-3">
-                          <span>$5.87</span>
+                          <span>${(this.state.total + (this.state.total * 0.0875)).toFixed(2)}</span>
                         </div>
                       </div>
                     </div>
