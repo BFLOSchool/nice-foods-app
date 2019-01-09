@@ -15,6 +15,7 @@ class Checkout extends Component {
     this.handleCardExpiryYearChange = this.handleCardExpiryYearChange.bind(this);
     this.handleCVVCodeChange = this.handleCVVCodeChange.bind(this);
     this.handleZipCodeChange = this.handleZipCodeChange.bind(this);
+    this.setupCart = this.setupCart.bind(this);
 
     this.state = {
       cart: [],
@@ -34,8 +35,19 @@ class Checkout extends Component {
       cardZipCode: ""
     }
   }
+  componentDidMount() {
+    this.setupCart();
+  }
   setupCart() {
     var cart = JSON.parse(localStorage.getItem("cart"));
+    var total = 0;
+    for (var i = 0; i < cart.length; i++) {
+      total = total + cart[i].price;
+    }
+    this.setState({
+      cart: cart,
+      total: total
+    })
   }
   handleNameOnCardChange(event) {
     this.setState({
@@ -68,7 +80,7 @@ class Checkout extends Component {
     })
   }
   goBack() {
-
+    this.props.history.goBack();
   }
   checkout(event) {
     event.preventDefault();

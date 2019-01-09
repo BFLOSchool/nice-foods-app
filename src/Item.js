@@ -16,6 +16,23 @@ class Item extends Component {
       item: {}
     }
     this.getItemDetails();
+    this.setupCart();
+  }
+  componentDidMount() {
+    this.setupCart();
+  }
+  setupCart() {
+    var cart = JSON.parse(localStorage.getItem("cart"));
+    if (cart.length > 0) {
+      var total = 0;
+      for (var i = 0; i < cart.length; i++) {
+        total = total + cart[i].price;
+      }
+      this.setState({
+        cart: cart,
+        total: total
+      })
+    }
   }
   addToCart() {
     var newCart = this.state.cart.concat(this.state.item);
