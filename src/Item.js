@@ -23,7 +23,7 @@ class Item extends Component {
   }
   setupCart() {
     var cart = JSON.parse(localStorage.getItem("cart"));
-    if (cart.length > 0) {
+    if (cart != undefined) {
       var total = 0;
       for (var i = 0; i < cart.length; i++) {
         total = total + cart[i].price;
@@ -40,16 +40,15 @@ class Item extends Component {
     for (var i = 0; i < newCart.length; i++) {
       total = total + newCart[i].price;
     }
+    localStorage.setItem("cart", JSON.stringify(newCart));
     this.setState({
       cart: newCart,
       total: total
     })
-    localStorage.setItem(JSON.stringify(this.state.cart), "cart");
   }
   getItemDetails() {
     axios.get('https://dev-curriculum.bfloschool.com/api/marketplace/'+this.props.match.params.itemId)
     .then(response => {
-      console.log(response.data.item)
       this.setState({
         item: response.data.item
       })

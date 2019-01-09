@@ -40,14 +40,16 @@ class Checkout extends Component {
   }
   setupCart() {
     var cart = JSON.parse(localStorage.getItem("cart"));
-    var total = 0;
-    for (var i = 0; i < cart.length; i++) {
-      total = total + cart[i].price;
+    if (cart != undefined) {
+      var total = 0;
+      for (var i = 0; i < cart.length; i++) {
+        total = total + cart[i].price;
+      }
+      this.setState({
+        cart: cart,
+        total: total
+      })  
     }
-    this.setState({
-      cart: cart,
-      total: total
-    })
   }
   handleNameOnCardChange(event) {
     this.setState({
