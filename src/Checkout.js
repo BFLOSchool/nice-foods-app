@@ -18,6 +18,7 @@ class Checkout extends Component {
 
     this.state = {
       cart: [],
+      total: 0,
       item: {
         name: "Smoothie",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac blandit diam, in posuere felis. Praesent volutpat, augue id vulputate fringilla, turpis metus ullamcorper elit, non bibendum turpis odio in nulla. Phasellus sed aliquam mauris. Donec nulla leo, congue sit amet aliquet non, aliquam nec eros. Nulla eget mi sed nisl hendrerit dapibus vitae aliquet neque. Etiam egestas turpis sit amet ornare auctor. Suspendisse ac tristique purus.\n\nProin imperdiet pulvinar sem, id porttitor enim tincidunt sed. Nulla id nisl eros. Nulla et elementum arcu. Etiam et elementum arcu. Mauris finibus egestas pulvinar. Pellentesque sagittis ultrices dui sed pellentesque. Mauris et varius libero, vel rutrum dui.",
@@ -32,6 +33,9 @@ class Checkout extends Component {
       cardCVV: "",
       cardZipCode: ""
     }
+  }
+  setupCart() {
+    var cart = JSON.parse(localStorage.getItem("cart"));
   }
   handleNameOnCardChange(event) {
     this.setState({
@@ -150,10 +154,10 @@ class Checkout extends Component {
                  <hr style={{marginBottom: 10, marginTop: 10}} />
                  <div className="row">
                    <div className="col-sm-9">
-                     <b className="charcoal">Subtotal</b>
+                     <b className="charcoal">Subtotal ({this.state.cart.length} items)</b>
                    </div>
                    <div className="col-sm-3">
-                     <span>$5</span>
+                     <span>${this.state.total}</span>
                    </div>
                  </div>
                  <hr style={{marginBottom: 10, marginTop: 10}} />
@@ -162,7 +166,7 @@ class Checkout extends Component {
                      <b className="charcoal">Tax</b>
                    </div>
                    <div className="col-sm-3">
-                     <span>$0.87</span>
+                     <span>${(this.state.total * 0.0875).toFixed(2)}</span>
                    </div>
                  </div>
                  <hr style={{marginBottom: 10, marginTop: 10}} />
@@ -171,7 +175,7 @@ class Checkout extends Component {
                      <b className="black">Grand Total</b>
                    </div>
                    <div className="col-sm-3">
-                     <span>$5.87</span>
+                     <span>${(this.state.total + (this.state.total * 0.0875)).toFixed(2)}</span>
                    </div>
                  </div>
                </div>
