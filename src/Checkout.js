@@ -48,7 +48,7 @@ class Checkout extends Component {
       this.setState({
         cart: cart,
         total: total
-      })  
+      })
     }
   }
   handleNameOnCardChange(event) {
@@ -155,7 +155,7 @@ class Checkout extends Component {
                   </div>
                   <br /><br />
                   <div className="col-6">
-                    <button className="back" onClick={this.goBack}><b>Back</b></button>
+                    <button type="button" className="back" onClick={this.goBack}><b>Back</b></button>
                   </div>
                   <div className="col-6">
                     <input type="submit" className="add" onClick={this.checkout} />

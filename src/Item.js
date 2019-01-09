@@ -15,10 +15,9 @@ class Item extends Component {
       total: 0,
       item: {}
     }
-    this.getItemDetails();
-    this.setupCart();
   }
   componentDidMount() {
+    this.getItemDetails();
     this.setupCart();
   }
   setupCart() {
