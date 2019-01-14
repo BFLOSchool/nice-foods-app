@@ -9,6 +9,7 @@ class Checkout extends Component {
     this.checkout = this.checkout.bind(this);
     this.goBack = this.goBack.bind(this);
 
+    this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleNameOnCardChange = this.handleNameOnCardChange.bind(this);
     this.handleCardNumberChange = this.handleCardNumberChange.bind(this);
     this.handleCardExpiryMonthChange = this.handleCardExpiryMonthChange.bind(this);
@@ -27,6 +28,7 @@ class Checkout extends Component {
         image: "https://cdn.bfloschool.com/projects/marketplace/images/smoothie.jpg",
         price: 5.00
       },
+      email: "",
       nameOnCard: "",
       cardNumber: "",
       cardExpiryMonth: "",
@@ -81,14 +83,34 @@ class Checkout extends Component {
       cardZipCode: event.target.value
     })
   }
+  handleEmailChange(event) {
+    this.setState({
+      email: event.target.value
+    })
+  }
   goBack() {
     this.props.history.goBack();
   }
   checkout(event) {
     event.preventDefault();
     if (this.state.nameOnCard !== "" && this.state.cardNumber.length === 16 && this.state.cardExpiryYear.length === 2 && this.state.cardExpiryMonth.length === 2 && this.state.cardCVV !== "" && this.state.cardCVV.length < 5 && this.state.cardZipCode.length === 5) {
-      // form successfully filled out
-      alert("Success! Your order has been placed.")
+      var data = {
+        card: {
+          name: this.state.nameOnCard,
+          number: this.state.cardNumber,
+          expiryMonth: this.state.cardExpiryMonth,
+          expiryYear: this.state.cardExpiryYear,
+          cvv: this.state.cardCVV,
+          zip: this.state.cardZipCode
+        },
+        email: this.state.emailAddress
+      }
+      axios.post('https://dev-curriculum.bfloschool.com/api/marketplace/checkout', data).then(response =>{
+
+    }).catch(error =>{
+      alert('Whoops, something went wrong. Please try again!')
+    });
+
     } else {
       // validation errors, form not properly filled out
       alert("Error. Please completely fill out this form.");
@@ -113,6 +135,9 @@ class Checkout extends Component {
               <p className="gray">Use the form below to complete your purchase. Thank you for shopping with us!</p>
               <form onSubmit={this.checkout}>
                 <div className="row">
+                <div className="col-12">
+                  <input type="email" placeholder="Email Address" value={this.state.emailAddress} onChange={this.handleEmailChange} />
+                </div>
                   <div className="col-12">
                     <input type="text" placeholder="Name on Card" value={this.state.nameOnCard} onChange={this.handleNameOnCardChange} />
                   </div>
