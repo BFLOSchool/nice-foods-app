@@ -17,7 +17,7 @@ class Home extends Component {
     this.getItems()
   }
   getItems() {
-    axios.get('https://dev-curriculum.bfloschool.com/api/marketplace')
+    axios.get('http://localhost:3000/api/marketplace')
     .then(response => {
       this.setState({
         items: response.data.items
