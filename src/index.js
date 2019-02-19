@@ -8,6 +8,9 @@ import Home from './Home';
 import Item from './Item';
 import Checkout from './Checkout';
 
+import Login from './Login';
+import Signup from './Signup';
+
 import {
   BrowserRouter as Router,
   Route
@@ -19,6 +22,8 @@ ReactDOM.render(
       <Route exact path="/" component={Home}/>
       <Route exact path="/item/:itemId" component={Item}/>
       <Route exact path="/checkout" component={Checkout}/>
+      <Route exact path="/login" component={Login}/>
+      <Route exact path="/signup" component={Signup}/>
     </div>
   </Router>,
  document.getElementById('root')

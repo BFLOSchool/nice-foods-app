@@ -27,13 +27,16 @@ class Login extends Component {
     })
   }
   handleSubmit(event) {
+    event.preventDefault();
+
     if (this.state.email != "" && this.state.password != "") {
       var data = {
         email: this.state.email,
         password: this.state.password
       }
-      axios.post('http://localhost:3000/login', data).then(response =>{
-
+      axios.post('http://localhost:5000/login', data).then(response =>{
+        alert("You have logged in successfully")
+        localStorage.setItem("token", response.data.token)
       }).catch(error =>{
         alert('Whoops, something went wrong. Please try again!')
       });
@@ -50,15 +53,15 @@ class Login extends Component {
             <div className="col-12" style={{backgroundColor: 'white', padding: 20}}>
               <h4><b>Login to your account</b></h4>
               <hr />
-              <form onSubmit={this.state.handleSubmit}>
+              <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                   <label>Email Address</label>
-                  <input onChange={this.state.handleEmailChange} type="email" className="form-control" placeholder="Enter email address" />
+                  <input onChange={this.handleEmailChange} type="email" className="form-control" placeholder="Enter email address" />
                   <small className="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div className="form-group">
                   <label>Password</label>
-                  <input onChange={this.state.handlePasswordChange} type="password" className="form-control" placeholder="Password" />
+                  <input onChange={this.handlePasswordChange} type="password" className="form-control" placeholder="Password" />
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
               </form>
